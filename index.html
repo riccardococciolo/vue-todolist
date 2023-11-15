@@ -14,12 +14,12 @@
         <div id="app" >
             <div>
                 <label for="todo">todo</label>
-                <input type="text" id="todo" v-model="newTodo.text">
+                <input type="text" id="todo" v-model="newTodo.text" @keyup.enter="addTodo" />
             </div>
             <button class="btn btn-primary" @click="addTodo">aggiungi</button>
             <div class="my-5">
                 <div v-for="(todo, index) in todos" :key="index" class="d-flex border border-black justify-content-between p-2 align-items-center">
-                    <span>{{ todo.text }}</span>
+                    <span @click="crossedOut(index)" :class="{'crossed-out': todo.done}" >{{ todo.text }}</span>
                     <span @click="delate(index)"><i class="fa-solid fa-x"></i></span>
                 </div>
             </div>
